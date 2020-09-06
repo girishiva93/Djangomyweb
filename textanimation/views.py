@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from.models import service
+from.models import textAnimation
 # Create your views here.
 
 
 def index(request):
-    services = service.objects.all()
+    textanimation = textAnimation.objects.all()
     context = {
-        'services': services
+        'textanimation': textanimation
     }
     return render(request, 'pages/index.html',context)

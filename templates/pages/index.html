@@ -10,18 +10,26 @@
         width="100%"
       />
       <div class="container">
+        {% if textAnimations %}
         <div class="intro">
-          <h1 class="intro-title mb-4">I am Shiva Giri</h1>
+          {% for textAnimation in textAnimations %}
+          <h1 class="intro-title mb-4">I am {{ textAnimation.name }}</h1>
           <p class="intro-subtitle">
             & I Am A
             <span
               class="txt-rotate"
               data-period="2000"
-              data-rotate='[ "Web Developer", "Web Designer", "Frontend Developer", "Graphic Designer"]'
+              data-rotate='[ "{{textAnimation.animation}}", "{{textAnimation.animationI}}", "{{textAnimation.animationII}}", "{{textAnimation.animationIV}}"]'
             ></span
             ><strong class="text-slider"></strong>
           </p>
+          {% endfor %}
+          {% else %}
+            <div class="col-md-12">
+              <p>No listing found</p>
+            </div>
         </div>
+        {% endif %}
       </div>
     </div>
   </section>
@@ -138,103 +146,31 @@
   <!-- service start from here -->
   <section id="service">
     <div class="container">
-      <h1 class="service-title">service</h1>
-      <p class="service-bio">If you don't like then don't pay</p>
-      <div class="service-row">
-        <div class="service-col">
-          <div class="service-box">
-            <div class="service-content">
-              <span class="ico-circle">
-                <i class="fas fa-tv" style="font-size: 50px"></i
-              ></span>
-              <h2 class="s-title">Web Design</h2>
-              <p class="service-discrip">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                adipisci eaque autem fugiat! Quia, provident vitae! Magni
-                tempora perferendis eum non provident.
-              </p>
+          <h1 class="service-title">service</h1>
+          <p class="service-bio">If you don't like then don't pay</p>
+          <div class="service-row">
+            {% if services %} 
+              {% for service in services %}  
+                <div class="service-col">
+                  <div class="service-box">
+                    <div class="service-content">
+                      <span class="ico-circle">
+                        <i class="{{service.icons}}" style="font-size: 50px"></i
+                      ></span>
+                      <h2 class="s-title">{{service.header}}</h2>
+                      <p class="service-discrip">
+                          {{service.description}}
+                      </p>
+                    </div>
+                  </div>
+                </div>            
+            {% endfor %}
+            {% else %}
+            <div class="col-md-12">
+              <p>No listing found</p>
             </div>
-          </div>
-        </div>
-        <div class="service-col">
-          <div class="service-box">
-            <div class="service-content">
-              <span class="ico-circle">
-                <i class="fas fa-code" style="font-size: 48px"></i
-              ></span>
-              <h2 class="s-title">WEB DEVELOPMENT</h2>
-              <p class="service-discrip">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                adipisci eaque autem fugiat! Quia, provident vitae! Magni
-                tempora perferendis eum non provident.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="service-col">
-          <div class="service-box">
-            <div class="service-content">
-              <span class="ico-circle">
-                <i class="material-icons" style="font-size: 58px"
-                  >camera_alt</i
-                ></span
-              >
-              <h2 class="s-title">PHOTOGRAPHY</h2>
-              <p class="service-discrip">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                adipisci eaque autem fugiat! Quia, provident vitae! Magni
-                tempora perferendis eum non provident.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="service-col">
-          <div class="service-box">
-            <div class="service-content">
-              <span class="ico-circle">
-                <i class="fas fa-mobile" style="font-size: 48px"></i
-              ></span>
-              <h2 class="s-title">RESPONSIVE DESIGN</h2>
-              <p class="service-discrip">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                adipisci eaque autem fugiat! Quia, provident vitae! Magni
-                tempora perferendis eum non provident.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="service-col">
-          <div class="service-box">
-            <div class="service-content">
-              <span class="ico-circle">
-                <i class="fas fa-drafting-compass" style="font-size: 48px"></i
-              ></span>
-              <h2 class="s-title">GRAPHIC DESIGN</h2>
-              <p class="service-discrip">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                adipisci eaque autem fugiat! Quia, provident vitae! Magni
-                tempora perferendis eum non provident.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="service-col">
-          <div class="service-box">
-            <div class="service-content">
-              <span class="ico-circle">
-                <i class="fas fa-bullhorn" style="font-size: 48px"></i
-              ></span>
-              <h2 class="s-title">MARKETING SERVICES</h2>
-              <p class="service-discrip">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                adipisci eaque autem fugiat! Quia, provident vitae! Magni
-                tempora perferendis eum non provident.
-              </p>
-            </div>
-          </div>
-        </div>
+            {% endif %}
       </div>
-    </div>
   </section>
   <!-- end here -->
   <!-- work  from here-->
@@ -243,38 +179,23 @@
       <h1 class="service-title">portfolio</h1>
       <p class="portfolio-bio">if you don't like my work then don't pay !</p>
       <div class="portfolio-row">
-        <div class="portfolio-col">
-          <div class="cover">
-            <img src="./image/realstate.jpeg" alt="" width="100%" />
-            <div class="overlay">
-              <p class="web-link">view | details</p>
+        {% if portfolios %}
+          {% for portfolio in portfolios %}
+            <div class="portfolio-col">
+              <div class="cover">
+                <img src="{{portfolio.photo.url}}" alt="" width="100%" />
+                <div class="overlay">
+                  <p class="web-link">view | details</p>
+                </div>
+              </div>
+              <h5 class="website-name">{{portfolio.imageheader}}</h5>
             </div>
-          </div>
-          <h5 class="website-name">Lorem ipsum dolor sit</h5>
+          {% endfor %}
+        {% else %}
+        <div class="col-md-12">
+          <p>No listing found</p>
         </div>
-        <div class="portfolio-col">
-          <div class="cover">
-            <img
-              class="trek-webP"
-              src="./image/realstate.jpeg"
-              alt=""
-              width="100%"
-            />
-            <div class="overlay">
-              <p class="web-link">view | details</p>
-            </div>
-          </div>
-          <h5 class="website-name">Lorem ipsum dolor sit</h5>
-        </div>
-        <div class="portfolio-col">
-          <div class="cover">
-            <img src="./image/realstate.jpeg" alt="" width="100%" />
-            <div class="overlay">
-              <p class="web-link">view | details</p>
-            </div>
-          </div>
-          <h5 class="website-name">Lorem ipsum dolor sit</h5>
-        </div>
+        {% endif %}
       </div>
     </div>
   </section>

@@ -4,10 +4,9 @@ from django.db import models
 
 
 class service (models.Model):
-    title = models.CharField(max_length=250)
     header = models.CharField(max_length=250)
-    bio = models.CharField(max_length=400)
-    description = models.CharField(max_length=900)
+    icons = models.CharField(max_length=250,blank=True)
+    description = models.TextField()
 
     def __str__(self):
-        return self.title
+        return self.header

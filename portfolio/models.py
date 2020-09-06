@@ -4,10 +4,8 @@ from django.db import models
 
 
 class portfolio (models.Model):
-    title = models.CharField(max_length=200)
-    bio = models.CharField(max_length=500)
-    photo = models.ImageField(upload_to='photo/%Y/%m/%d')
     imageheader = models.CharField(max_length=200)
+    photo = models.ImageField(upload_to='photo/%Y/%m/%d')
 
     def __str__(self):
-        return self.title
+        return self.imageheader

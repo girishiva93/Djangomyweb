@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'about.apps.AboutConfig',
     'portfolio.apps.PortfolioConfig',
+    'textanimation.apps.TextanimationConfig',
     'service.apps.ServiceConfig',
     'django.contrib.admin',
     'django.contrib.auth',

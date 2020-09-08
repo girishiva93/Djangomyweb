@@ -26,7 +26,7 @@ SECRET_KEY = 't!g7^^oe+u)@lwe*4=w#$hckg$%2-d3xj7eog6zf^pxs^v281$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['aasisweb.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -136,9 +136,12 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'myweb/aashishP')]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'myweb/aashishP')]
 
 # Media Folder Settings
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
